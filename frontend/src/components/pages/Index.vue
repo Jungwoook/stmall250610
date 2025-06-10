@@ -44,6 +44,10 @@ export default {
           text: "Inventory",
           link: "/inventories",
       },
+      {
+          text: "Mypage",
+          link: "/mypages",
+      },
     ],
   }),
 };

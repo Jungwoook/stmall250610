@@ -25,6 +25,8 @@
                     <thead>
                         <tr>
                         <th>Id</th>
+                        <th>Name</th>
+                        <th>Stock</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,6 +36,8 @@
                             :style="val === selectedRow ? 'background-color: rgb(var(--v-theme-primary), 0.2) !important;':''"
                         >
                             <td class="font-semibold">{{ idx + 1 }}</td>
+                            <td class="whitespace-nowrap" label="Name">{{ val.name }}</td>
+                            <td class="whitespace-nowrap" label="Stock">{{ val.stock }}</td>
                             <v-row class="ma-0 pa-4 align-center">
                                 <v-spacer></v-spacer>
                                 <Icon style="cursor: pointer;" icon="mi:delete" @click="deleteRow(val)" />
@@ -95,6 +99,8 @@
                     </v-toolbar>
                     <v-card-text>
                         <div>
+                            <String label="Name" v-model="selectedRow.name" :editMode="true"/>
+                            <Number label="Stock" v-model="selectedRow.stock" :editMode="true"/>
                             <v-divider class="border-opacity-100 my-divider"></v-divider>
                             <v-layout row justify-end>
                                 <v-btn

@@ -22,14 +22,17 @@ public class Delivery {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @PostPersist
-    public void onPostPersist() {
-        DeliveryCompleted deliveryCompleted = new DeliveryCompleted(this);
-        deliveryCompleted.publishAfterCommit();
+    private Long orderId;
 
-        DeliveryReturned deliveryReturned = new DeliveryReturned(this);
-        deliveryReturned.publishAfterCommit();
-    }
+    private String customerId;
+
+    private String itemId;
+
+    private Integer qty;
+
+    private String address;
+
+    private String status;
 
     public static DeliveryRepository repository() {
         DeliveryRepository deliveryRepository = DeliveryApplication.applicationContext.getBean(
@@ -46,6 +49,8 @@ public class Delivery {
         Delivery delivery = new Delivery();
         repository().save(delivery);
 
+        DeliveryCompleted deliveryCompleted = new DeliveryCompleted(delivery);
+        deliveryCompleted.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -56,6 +61,8 @@ public class Delivery {
             delivery // do something
             repository().save(delivery);
 
+            DeliveryCompleted deliveryCompleted = new DeliveryCompleted(delivery);
+            deliveryCompleted.publishAfterCommit();
 
          });
         */
@@ -71,6 +78,8 @@ public class Delivery {
         Delivery delivery = new Delivery();
         repository().save(delivery);
 
+        DeliveryReturned deliveryReturned = new DeliveryReturned(delivery);
+        deliveryReturned.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -81,6 +90,8 @@ public class Delivery {
             delivery // do something
             repository().save(delivery);
 
+            DeliveryReturned deliveryReturned = new DeliveryReturned(delivery);
+            deliveryReturned.publishAfterCommit();
 
          });
         */

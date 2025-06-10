@@ -25,6 +25,22 @@ public class PolicyHandler {
 
     @StreamListener(
         value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='StockIncreased'"
+    )
+    public void wheneverStockIncreased_SendAlert(
+        @Payload StockIncreased stockIncreased
+    ) {
+        StockIncreased event = stockIncreased;
+        System.out.println(
+            "\n\n##### listener SendAlert : " + stockIncreased + "\n\n"
+        );
+
+        // Sample Logic //
+        Order.sendAlert(event);
+    }
+
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
         condition = "headers['type']=='DeliveryReturned'"
     )
     public void wheneverDeliveryReturned_UpdateStatus(

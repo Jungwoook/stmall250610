@@ -1,5 +1,35 @@
 <template>
     <div>
+        <Number
+            label="OrderId"
+            v-model="value.orderId"
+            :editMode="editMode"
+        />
+        <String
+            label="CustomerId"
+            v-model="value.customerId"
+            :editMode="editMode"
+        />
+        <String
+            label="ItemId"
+            v-model="value.itemId"
+            :editMode="editMode"
+        />
+        <Number
+            label="Qty"
+            v-model="value.qty"
+            :editMode="editMode"
+        />
+        <String
+            label="Address"
+            v-model="value.address"
+            :editMode="editMode"
+        />
+        <String
+            label="Status"
+            v-model="value.status"
+            :editMode="editMode"
+        />
         <v-row class="ma-0 pa-0">
             <v-spacer></v-spacer>
             <v-btn width="64px" color="primary" @click="save">

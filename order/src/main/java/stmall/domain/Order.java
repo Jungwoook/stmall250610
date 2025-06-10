@@ -28,13 +28,18 @@ public class Order {
 
     private Integer qty;
 
+    private String address;
+
     private String status;
 
     @PostPersist
     public void onPostPersist() {
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
+    }
 
+    @PreRemove
+    public void onPreRemove() {
         OrderCancelled orderCancelled = new OrderCancelled(this);
         orderCancelled.publishAfterCommit();
     }
@@ -46,6 +51,31 @@ public class Order {
         return orderRepository;
     }
 
+    //<<< Clean Arch / Port Method
+    public static void sendAlert(StockIncreased stockIncreased) {
+        //implement business logic here:
+
+        /** Example 1:  new item 
+        Order order = new Order();
+        repository().save(order);
+
+        */
+
+        /** Example 2:  finding and process
+        
+
+        repository().findById(stockIncreased.get???()).ifPresent(order->{
+            
+            order // do something
+            repository().save(order);
+
+
+         });
+        */
+
+    }
+
+    //>>> Clean Arch / Port Method
     //<<< Clean Arch / Port Method
     public static void updateStatus(DeliveryReturned deliveryReturned) {
         //implement business logic here:

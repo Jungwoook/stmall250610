@@ -28,5 +28,12 @@ import {
                 to: '/inventories',
             }"
         />
+        <VerticalNavSectionTitle :item="{ heading: 'Dashboard' }" />
+        <VerticalNavLink
+            :item="{
+                title: 'Mypage',
+                to: '/mypages',
+            }"
+        />
     </ul>
 </template>

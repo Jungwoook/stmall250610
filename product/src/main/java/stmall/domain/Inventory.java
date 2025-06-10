@@ -9,8 +9,8 @@ import java.util.Map;
 import javax.persistence.*;
 import lombok.Data;
 import stmall.ProductApplication;
-import stmall.domain.SoldOut;
 import stmall.domain.StockDecreased;
+import stmall.domain.StockIncreased;
 
 @Entity
 @Table(name = "Inventory_table")
@@ -22,14 +22,9 @@ public class Inventory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @PostPersist
-    public void onPostPersist() {
-        StockDecreased stockDecreased = new StockDecreased(this);
-        stockDecreased.publishAfterCommit();
+    private String name;
 
-        SoldOut soldOut = new SoldOut(this);
-        soldOut.publishAfterCommit();
-    }
+    private Integer stock;
 
     public static InventoryRepository repository() {
         InventoryRepository inventoryRepository = ProductApplication.applicationContext.getBean(
@@ -46,6 +41,8 @@ public class Inventory {
         Inventory inventory = new Inventory();
         repository().save(inventory);
 
+        StockDecreased stockDecreased = new StockDecreased(inventory);
+        stockDecreased.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -56,6 +53,8 @@ public class Inventory {
             inventory // do something
             repository().save(inventory);
 
+            StockDecreased stockDecreased = new StockDecreased(inventory);
+            stockDecreased.publishAfterCommit();
 
          });
         */
@@ -71,6 +70,8 @@ public class Inventory {
         Inventory inventory = new Inventory();
         repository().save(inventory);
 
+        StockIncreased stockIncreased = new StockIncreased(inventory);
+        stockIncreased.publishAfterCommit();
         */
 
         /** Example 2:  finding and process
@@ -81,6 +82,8 @@ public class Inventory {
             inventory // do something
             repository().save(inventory);
 
+            StockIncreased stockIncreased = new StockIncreased(inventory);
+            stockIncreased.publishAfterCommit();
 
          });
         */
