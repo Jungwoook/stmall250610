@@ -12,6 +12,8 @@ import stmall.infra.AbstractEvent;
 public class StockDecreased extends AbstractEvent {
 
     private Long id;
+    private String name;
+    private Integer stock;
 
     public StockDecreased(Inventory aggregate) {
         super(aggregate);

@@ -28,6 +28,7 @@
                         <th>CustomerId</th>
                         <th>ItemId</th>
                         <th>Qty</th>
+                        <th>Address</th>
                         <th>Status</th>
                         </tr>
                     </thead>
@@ -41,6 +42,7 @@
                             <td class="whitespace-nowrap" label="CustomerId">{{ val.customerId }}</td>
                             <td class="whitespace-nowrap" label="ItemId">{{ val.itemId }}</td>
                             <td class="whitespace-nowrap" label="Qty">{{ val.qty }}</td>
+                            <td class="whitespace-nowrap" label="Address">{{ val.address }}</td>
                             <td class="whitespace-nowrap" label="Status">{{ val.status }}</td>
                             <v-row class="ma-0 pa-4 align-center">
                                 <v-spacer></v-spacer>
@@ -106,6 +108,7 @@
                             <String label="CustomerId" v-model="selectedRow.customerId" :editMode="true"/>
                             <String label="ItemId" v-model="selectedRow.itemId" :editMode="true"/>
                             <Number label="Qty" v-model="selectedRow.qty" :editMode="true"/>
+                            <String label="Address" v-model="selectedRow.address" :editMode="true"/>
                             <String label="Status" v-model="selectedRow.status" :editMode="true"/>
                             <v-divider class="border-opacity-100 my-divider"></v-divider>
                             <v-layout row justify-end>

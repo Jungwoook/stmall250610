@@ -16,6 +16,11 @@
             :editMode="editMode"
         />
         <String
+            label="Address"
+            v-model="value.address"
+            :editMode="editMode"
+        />
+        <String
             label="Status"
             v-model="value.status"
             :editMode="editMode"

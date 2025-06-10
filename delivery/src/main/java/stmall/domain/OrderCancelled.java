@@ -10,4 +10,8 @@ import stmall.infra.AbstractEvent;
 public class OrderCancelled extends AbstractEvent {
 
     private Long id;
+    private String customerId;
+    private String itemId;
+    private Integer qty;
+    private String address;
 }

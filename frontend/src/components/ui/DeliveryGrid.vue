@@ -25,6 +25,12 @@
                     <thead>
                         <tr>
                         <th>Id</th>
+                        <th>OrderId</th>
+                        <th>CustomerId</th>
+                        <th>ItemId</th>
+                        <th>Qty</th>
+                        <th>Address</th>
+                        <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,6 +40,12 @@
                             :style="val === selectedRow ? 'background-color: rgb(var(--v-theme-primary), 0.2) !important;':''"
                         >
                             <td class="font-semibold">{{ idx + 1 }}</td>
+                            <td class="whitespace-nowrap" label="OrderId">{{ val.orderId }}</td>
+                            <td class="whitespace-nowrap" label="CustomerId">{{ val.customerId }}</td>
+                            <td class="whitespace-nowrap" label="ItemId">{{ val.itemId }}</td>
+                            <td class="whitespace-nowrap" label="Qty">{{ val.qty }}</td>
+                            <td class="whitespace-nowrap" label="Address">{{ val.address }}</td>
+                            <td class="whitespace-nowrap" label="Status">{{ val.status }}</td>
                             <v-row class="ma-0 pa-4 align-center">
                                 <v-spacer></v-spacer>
                                 <Icon style="cursor: pointer;" icon="mi:delete" @click="deleteRow(val)" />
@@ -95,6 +107,12 @@
                     </v-toolbar>
                     <v-card-text>
                         <div>
+                            <Number label="OrderId" v-model="selectedRow.orderId" :editMode="true"/>
+                            <String label="CustomerId" v-model="selectedRow.customerId" :editMode="true"/>
+                            <String label="ItemId" v-model="selectedRow.itemId" :editMode="true"/>
+                            <Number label="Qty" v-model="selectedRow.qty" :editMode="true"/>
+                            <String label="Address" v-model="selectedRow.address" :editMode="true"/>
+                            <String label="Status" v-model="selectedRow.status" :editMode="true"/>
                             <v-divider class="border-opacity-100 my-divider"></v-divider>
                             <v-layout row justify-end>
                                 <v-btn

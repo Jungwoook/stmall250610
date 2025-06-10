@@ -12,6 +12,11 @@ import stmall.infra.AbstractEvent;
 public class DeliveryReturned extends AbstractEvent {
 
     private Long id;
+    private Long orderId;
+    private String customerId;
+    private String itemId;
+    private Integer qty;
+    private String address;
 
     public DeliveryReturned(Delivery aggregate) {
         super(aggregate);
